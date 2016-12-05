@@ -13,10 +13,13 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+import Vue from 'vue'
+
+import  example from  './components/Example.vue';
 
 const app = new Vue({
     el: '#app',
+    components: { example },
     data: {
         message: "Salut les gens",
         link: "goldoni",
