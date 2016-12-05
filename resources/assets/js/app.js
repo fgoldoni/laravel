@@ -13,9 +13,11 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-import Vue from 'vue'
+var Vue = require('vue');
 
-import  example from  './components/Example.vue';
+Vue.use(require('vue-resource'));
+
+import  example from  './components/Example.vue'
 
 const app = new Vue({
     el: '#app',
