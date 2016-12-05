@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href={{ asset('css/app.css') }} rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -79,9 +79,23 @@
         </nav>
 
         @yield('content')
+
+        <div class="row">
+            <div class="col-sm-4">
+                <a :href="email"> @{{ message }}</a>
+                @{{ message }}
+            </div>
+            <div class="col-sm-4">
+                One of three columns
+            </div>
+            <div class="col-sm-4">
+                One of three columns
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src={{ asset('js/app.js') }}></script>
 </body>
 </html>

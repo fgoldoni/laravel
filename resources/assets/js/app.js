@@ -16,5 +16,10 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        message: "Salut les gens",
+        link: "goldoni",
+        email: "goldoni@yahoo.fr"
+    }
 });
