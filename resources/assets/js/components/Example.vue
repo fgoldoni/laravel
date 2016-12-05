@@ -30,7 +30,8 @@
         },
         mounted() {
             console.log('Component ready.')
-            this.$http.get('https://jsonplaceholder.typicode.com/users/').then((response) => {
+            this.$user = this.$resource('https://jsonplaceholder.typicode.com/users{/id}');
+            this.$user.query().then((response) => {
                 this.users = response.data;
               }, (response) => {
                 console.log('Error',response)
@@ -39,18 +40,14 @@
         methods: {
             save(user){
                console.log(user.name)
-               this.$http.put('https://jsonplaceholder.typicode.com/users/' + user.id,{
-                    name: user.name
-               }).then((response) => {
+               this.$user.update({id: user.id},{ name: user.name}).then((response) => {
                 console.log('Success',response)
               }, (response) => {
                 console.log('Error',response)
               });
             },
             destroy(user){
-                 this.$http.delete('https://jsonplaceholder.typicode.com/users/' + user.id,{
-                    name: user.name
-               }).then((response) => {
+                 this.$user.remove({id: user.id}).then((response) => {
                 this.users=this.users.filter(u => u !== user)
               }, (response) => {
                 console.log('Error',response)
