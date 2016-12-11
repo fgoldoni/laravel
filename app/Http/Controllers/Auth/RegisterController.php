@@ -61,7 +61,7 @@ class RegisterController extends Controller
         if($user){
             $user->update(['confirmation_token' => null ]);
             $this->guard()->login($user);
-            return redirect($this->redirectPath())->with('success','Compte creer');
+            return redirect($this->redirectPath())->with([ 'success' => 'Compte creer' , 'status' => 401 ]);
 
         }else{
             return redirect('/login')->with('error','Ce lien ne semble pas valide');
