@@ -30,7 +30,7 @@
         },
         mounted() {
             console.log('Component ready.')
-            this.$user = this.$resource('https://jsonplaceholder.typicode.com/users{/id}');
+            this.$user = this.$resource('users{/id}');
             this.$user.query().then((response) => {
                 this.users = response.data;
               }, (response) => {

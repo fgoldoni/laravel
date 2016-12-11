@@ -16,6 +16,8 @@ require('./bootstrap');
 var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
+Vue.http.options.root='https://jsonplaceholder.typicode.com'
+//Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
 import  example from  './components/Example.vue'
 
