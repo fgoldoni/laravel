@@ -29,3 +29,10 @@ Route::get('/home', 'HomeController@index');
 Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
     Route::resource('posts' , 'PostsController',['only' => ['index', 'show']]);
 });
+
+Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
+    Route::resource('pages' , 'PagesController');
+});
+
+
+
