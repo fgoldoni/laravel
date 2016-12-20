@@ -632,7 +632,7 @@
 
                             <li>
                                 <a href="#" class="item clearfix">
-                                    <img src="img/profileimg4.png" alt="img" class="img">
+                                    <img src={{ asset('admin/img/profileimg4.png') }} alt="img" class="img">
                                     <span class="from">Timmy Jefsin</span>
                                     Tonight Party
                                     <span class="date">22 May</span>
@@ -758,11 +758,11 @@
                     </div>
                     <div class="panel-body">
                         <ul class="basic-list image-list">
-                            <li><img src="img/profileimg.png" alt="img" class="img"><b>Jonathan Doe</b><span class="desc">Designer</span></li>
-                            <li><img src="img/profileimg2.png" alt="img" class="img"><b>Egemem Ka</b><span class="desc">Front-End Developer</span></li>
-                            <li><img src="img/profileimg3.png" alt="img" class="img"><b>Timmy Jefsin</b><span class="desc">Back-End Developer</span></li>
-                            <li><img src="img/profileimg4.png" alt="img" class="img"><b>James K. Throwing</b><span class="desc">Marketing</span></li>
-                            <li><img src="img/profileimg5.png" alt="img" class="img"><b>John Doe</b><span class="desc">iOS Developer</span></li>
+                            <li><img src={{ asset('admin/img/profileimg.png') }} alt="img" class="img"><b>Jonathan Doe</b><span class="desc">Designer</span></li>
+                            <li><img src={{ asset('admin/img/profileimg2.png') }} alt="img" class="img"><b>Egemem Ka</b><span class="desc">Front-End Developer</span></li>
+                            <li><img src={{ asset('admin/img/profileimg3.png') }} alt="img" class="img"><b>Timmy Jefsin</b><span class="desc">Back-End Developer</span></li>
+                            <li><img src={{ asset('admin/img/profileimg4.png') }} alt="img" class="img"><b>James K. Throwing</b><span class="desc">Marketing</span></li>
+                            <li><img src={{ asset('admin/img/profileimg5.png') }} alt="img" class="img"><b>John Doe</b><span class="desc">iOS Developer</span></li>
                         </ul>
                     </div>
                 </div>
@@ -922,10 +922,10 @@
 
             <div class="gn-title">ONLINE MEMBERS (3)</div>
             <ul class="group">
-                <li class="member"><a href="#"><img src="img/profileimg.png" alt="img"><b>Allice Mingham</b>Los Angeles</a><span class="status online"></span></li>
-                <li class="member"><a href="#"><img src="img/profileimg2.png" alt="img"><b>James Throwing</b>Las Vegas</a><span class="status busy"></span></li>
-                <li class="member"><a href="#"><img src="img/profileimg3.png" alt="img"><b>Fred Stonefield</b>New York</a><span class="status away"></span></li>
-                <li class="member"><a href="#"><img src="img/profileimg4.png" alt="img"><b>Chris M. Johnson</b>California</a><span class="status online"></span></li>
+                <li class="member"><a href="#"><img src={{ asset('admin/img/profileimg.png') }}  alt="img"><b>Allice Mingham</b>Los Angeles</a><span class="status online"></span></li>
+                <li class="member"><a href="#"><img src={{ asset('admin/img/profileimg2.png') }} alt="img"><b>James Throwing</b>Las Vegas</a><span class="status busy"></span></li>
+                <li class="member"><a href="#"><img src={{ asset('admin/img/profileimg3.png') }} alt="img"><b>Fred Stonefield</b>New York</a><span class="status away"></span></li>
+                <li class="member"><a href="#"><img src={{ asset('admin/img/profileimg4.png') }} alt="img"><b>Chris M. Johnson</b>California</a><span class="status online"></span></li>
             </ul>
 
             <div class="gn-title">OFFLINE MEMBERS (8)</div>

@@ -20,7 +20,7 @@
 </head>
 <body>
 <!-- Start Page Loading -->
-<div class="loading"><img src="img/loading.gif" alt="loading-img"></div>
+<div class="loading"><img src={{ asset('admin/img/loading.gif') }}  alt="loading-img"></div>
 <!-- End Page Loading -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START TOP -->
@@ -81,7 +81,7 @@
         </li>
 
         <li class="dropdown link">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="img/profileimg.png" alt="img"><b>{{ Auth::user()->name }}</b><span class="caret"></span></a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src={{ asset('admin/img/profileimg.png') }} alt="img"><b>{{ Auth::user()->name }}</b><span class="caret"></span></a>
             <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
                 <li role="presentation" class="dropdown-header">Profile</li>
                 <li><a href="#"><i class="fa falist fa-inbox"></i>Inbox<span class="badge label-danger">4</span></a></li>

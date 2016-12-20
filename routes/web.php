@@ -32,7 +32,12 @@ Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
 
 Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
     Route::resource('pages' , 'PagesController');
+    Route::get('pages/dashboard' , 'PagesController@dashboard');
 });
 
+Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
+    Route::get('products' , 'ProductsController@index');
+    Route::get('products/edit' , 'ProductsController@edit');
+});
 
 
