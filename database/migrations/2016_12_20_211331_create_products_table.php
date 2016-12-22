@@ -15,6 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('isbn',15)->default('');
+            $table->string('name')->default('');
+            $table->text('content');
+            $table->integer('quantity')->default(0);
+            $table->double('price',10,2)->default(0);
+            $table->enum('status', ['Published', 'Not published','Deleted']);
+            $table->string('link')->default('');
+            $table->unsignedTinyInteger('deleted')->default(0);
             $table->timestamps();
         });
     }
