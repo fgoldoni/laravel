@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Media;
+use App\Meta;
+use App\Product;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +19,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+       /*$products = Product::with(['category' => function($query){
+            $query->select('name');
+        }])->get();*/
+        $products = Product::get();
+        $products->load('category');
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -24,7 +34,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $produts    = factory(Product::class)->create(['media_id' => 1,'category_id' => 1]);
+        $medias     = factory(Media::class)->create();
+        $categories = factory(Category::class)->create();
+        $metas = factory(Meta::class)->create();
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Media;
+use App\Meta;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -25,12 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $medias = Media::first();
+        /*$medias = Media::first();
         $products = Product::first();
+        $m=$products->metas->toArray();
+
         $result[]=$products;
         $result[]=$medias;
-        var_dump($products->category->toJson());
-        dd($result);
-        //return view('home');
+        $result[]=$m;
+        dd($result);*/
+        return view('home');
     }
 }

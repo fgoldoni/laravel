@@ -3,7 +3,7 @@
 <!-- ================================================
 jQuery Library
 ================================================ -->
-<script type="text/javascript" src={{ asset('admin/js/jquery.min.js') }}></script>
+<script type="text/javascript" src='https://code.jquery.com/jquery-1.12.4.js'></script>
 
 <!-- ================================================
 Bootstrap Core JavaScript File
@@ -84,7 +84,6 @@ Rickshaw
 <!-- ================================================
 Data Tables
 ================================================ -->
-<script src={{ asset('admin/js/datatables/datatables.min.js') }}></script>
 
 <!-- ================================================
 Sweet Alert
