@@ -112,6 +112,7 @@
                 One of three columns
             </div>
         </div>
+        <pagea></pagea>
         <example></example>
 
     </div>

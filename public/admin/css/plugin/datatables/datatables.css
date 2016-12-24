@@ -22,7 +22,7 @@ table.dataTable tfoot th {
 }
 table.dataTable thead th,
 table.dataTable thead td {
-  padding: 16px 18px;
+  padding: 2px 20px 20px 15px;
   border-bottom: 1px solid #ccc;
 }
 table.dataTable thead th:active,

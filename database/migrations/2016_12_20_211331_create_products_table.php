@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('content');
             $table->integer('quantity')->default(0);
             $table->double('price',10,2)->default(0);
-            $table->enum('status', ['Published', 'Not published','Deleted']);
+            $table->enum('status', ['Pub', 'Not','Del']);
             $table->string('link')->default('');
             $table->unsignedTinyInteger('deleted')->default(0);
             $table->timestamps();

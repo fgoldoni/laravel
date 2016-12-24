@@ -96,7 +96,11 @@
     </ul>
     <!-- End Top Right -->
 
+    <!-- Modals -->
+
+
 </div>
 <!-- END TOP -->
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 
+@include('admin/products/products_dlgs')

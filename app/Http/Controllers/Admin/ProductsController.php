@@ -34,7 +34,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $produts    = factory(Product::class)->create(['media_id' => 1,'category_id' => 1]);
+        $produts    = factory(Product::class)->create(['media_id' => 1,'category_id' => 1,'status' => 'Not']);
         $medias     = factory(Media::class)->create();
         $categories = factory(Category::class)->create();
         $metas = factory(Meta::class)->create();

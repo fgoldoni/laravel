@@ -32,6 +32,10 @@ Main Css
 /* Shortcuts Css Codes */
 @import url('shortcuts.css');
 
+@import url('jquery.contextMenu.css');
+
+@import url('multi-select.css');
+
 /* ================================================
 Plugin Css
 ================================================ */

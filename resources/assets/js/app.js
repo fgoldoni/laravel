@@ -19,11 +19,12 @@ Vue.use(require('vue-resource'));
 Vue.http.options.root='https://jsonplaceholder.typicode.com'
 //Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
-import  example from  './components/Example.vue'
+import  example from  './components/Example.vue';
+import  pagea from  './components/Status.vue';
 
 const app = new Vue({
     el: '#app',
-    components: { example },
+    components: { example , pagea },
     data: {
         message: "Salut les gens",
         link: "goldoni",

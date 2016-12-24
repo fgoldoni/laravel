@@ -1,15 +1,14 @@
 @extends('layouts.admin.default')
 
 @section('content')
-    <div class="content">
+    <div id ="app" class="content">
         <div class="container-default">
             <!-- Start Page Header -->
             <div class="page-header">
                 <h1 class="title">Data Tables</h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="#">Tables</a></li>
-                    <li class="active">Data Tables</li>
+                    <li class="active">Products</li>
                 </ol>
 
                 <!-- Start Page Header Right Div -->
@@ -31,15 +30,14 @@
 
                 <div class="col-lg-8 col-md-6 titles">
                     <span class="icon color10-bg"><i class="fa fa-table"></i></span>
-                    <h1>Data Tables</h1>
-                    <h4>Highly flexible tool, based upon the foundations of progressive enhancement<br> and will add advanced interaction controls to any HTML table.</h4>
+                    <h1>Products Management</h1>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <ul class="list-unstyled list">
-                        <li><i class="fa fa-check"></i>Easy to Use<li>
-                        <li><i class="fa fa-check"></i>Group Options<li>
-                        <li><i class="fa fa-check"></i><a href="http://www.datatables.net/" target="_blank">DataTables</a><li>
+                        <li><i class="fa fa-check"></i>View<li>
+                        <li><i class="fa fa-check"></i>Create<li>
+                        <li><i class="fa fa-check"></i>Edit<li>
                     </ul>
                 </div>
 
@@ -58,9 +56,10 @@
                     </div>
                     <div class="panel-body table-responsive">
 
-                        <table id="" class="table display">
-                            <thead>
+                        <table id="" class="table display data table-bordered table-condensed">
+                            <thead class="">
                             <tr>
+                                <th class=""><input type="checkbox"></th>
                                 <th>id</th>
                                 <th>isbn</th>
                                 <th>name</th>
@@ -77,21 +76,20 @@
                             <tbody>
                             @foreach(json_decode($products) as $product)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->isbn }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->content }}</td>
-                                    <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{{ $product->status }}</td>
-                                    <td>{{ $product->created_at }}</td>
-                                    <td>{{ $product->updated_at }}</td>
+                                    <td class="context-menu-one " data-id="{{ $product->id }} "><input type="checkbox"></td>
+                                    <td class="context-menu-one">{{ $product->id }}</td>
+                                    <td class="context-menu-one">{{ $product->isbn }}</td>
+                                    <td class="context-menu-one">{{ $product->name }}</td>
+                                    <td class="context-menu-one">{{ $product->content }}</td>
+                                    <td class="context-menu-one">{{ $product->quantity }}</td>
+                                    <td class="context-menu-one">{{ $product->price }}</td>
+                                    <td class="context-menu-one">{{ $product->category->name }}</td>
+                                    <td class="context-menu-one"> <status :message="{{ $product->status }}" ></status></td>
+                                    <td class="context-menu-one">{{ $product->created_at }}</td>
+                                    <td class="context-menu-one">{{ $product->updated_at }}</td>
                                     <td>
-
-                                            <a type="" class="btn btn-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            <a type="" class="btn btn-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-
+                                        <a class="btn btn-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                        <a class="btn btn-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
