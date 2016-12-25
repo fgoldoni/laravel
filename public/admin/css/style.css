@@ -115,8 +115,6 @@ body {
   color: #58666e;
   margin: 0;
   line-height: 1.2em;
-  font-size: 15px;
-  font-family: 'Open Sans', sans-serif;
   outline: 0;
   text-Shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 }
@@ -949,6 +947,33 @@ Page Header
   bottom: -25px;
   position: relative !important;
 }
+.fixed-list {
+  max-height: 610px;
+  background-color: white;
+  border-collapse: separate;
+  box-sizing: content-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  overflow-y: scroll;
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
 /* Page loading */
 .loading {
   position: fixed;
@@ -961,6 +986,28 @@ Page Header
   opacity: 0.99;
 }
 .loading img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 50%;
+  top: 50%;
+  margin: -20px;
+}
+
+/* Page loading */
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #3d464d;
+  opacity: 0.99;
+}
+.loader img {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -3648,7 +3695,6 @@ table td {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   padding: 15px;
-  line-height: 1.7;
 }
 .doc-grid {
   padding: 10px 20px;

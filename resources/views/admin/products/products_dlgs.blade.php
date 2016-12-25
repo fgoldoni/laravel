@@ -9,11 +9,88 @@
             <div class="modal-body">
             <!-- Start Row -->
             <div class="row">
-
+                <!-- End Searchbox -->
                 <!-- Start Row -->
-                <div class="col-md-12 col-lg-6 padding-0">
+                <div class="col-md-12 col-lg-4 padding-0">
                     <!-- Start Panel -->
                     <div class="col-md-12">
+                        <!-- Start Browser Stats -->
+                        <div class="panel panel-widget">
+                            <div class="panel-title">
+                                Browser Stats
+                                <!-- Start Searchbox -->
+                                <ul class="panel-tools">
+                                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="panel-body">
+                                <ul class="basic-list">
+                                    <li>
+                                        <form class="search">
+                                            <input type="text" class="form-control" placeholder="Search ...">
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <div class="radio radio-danger">
+                                            <input type="radio"  id="radio4" value="option2" checked>
+                                            <label >
+                                                Firefox
+                                            </label>
+                                            <span class="right label label-danger">16.9%</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio radio-success">
+                                            <input type="radio"  id="radio4" value="option2" checked>
+                                            <label >
+                                                Safari
+                                            </label>
+                                            <span class="right label label-success">15.5%</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio radio-warning">
+                                            <input type="radio"  id="radio4" value="option2" checked>
+                                            <label >
+                                                Opera
+                                            </label>
+                                            <span class="right label label-warning">15.5%</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio radio-warning">
+                                            <input type="radio"  id="radio4" value="option2" checked>
+                                            <label >
+                                                Internet Explorer
+                                            </label>
+                                            <span class="right label label-warning">15.5%</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="radio radio-success">
+                                            <input type="radio"  id="radio4" value="option2" checked>
+                                            <label >
+                                                Mobile
+                                            </label>
+                                            <span class="right label label-success">15.5%</span>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!-- End Browser Stats -->
+                    </div>
+                    <!-- End Panel -->
+                </div>
+                <!-- End Row -->
+
+
+                <!-- Start Tab Panel -->
+                <div class="col-md-12 col-lg-8 padding-0">
+                    <form action="">
                         <div class="panel panel-default">
                             <div class="panel-title">
                                 Textboxes
@@ -23,42 +100,6 @@
                                     <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
                                 </ul>
                             </div>
-                            <div class="panel-body table-responsive">
-
-                                <table id="" class="table single_table display table-bordered table-condensed">
-                                    <thead class="">
-                                    <tr>
-                                        <th>status</th>
-                                        <th>isbn/nom</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="context-menu-one">image</td>
-                                        <td class="context-menu-one">image</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- End Panel -->
-                </div>
-                <!-- End Row -->
-
-
-                <!-- Start Tab Panel -->
-                <div class="col-md-12 col-lg-6 padding-0">
-                    <form action="">
-                        <div class="panel panel-default">
-
-                        <div class="panel-title">
-                            With Title Font
-                        </div>
-
                         <div class="panel-body">
 
                             <div role="tabpanel">
@@ -78,11 +119,6 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-title">
                                                     Textboxes
-                                                    <ul class="panel-tools">
-                                                        <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                                                        <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                                                        <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                                                    </ul>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="form-horizontal">
@@ -210,47 +246,55 @@
                                         <div class="row">
                                             <!-- Start Panel -->
                                             <div class="col-md-12">
-                                                <div class="panel panel-default">
+                                                <!-- Start Files -->
+                                                <div class="panel panel-widget" style="height:450px;">
                                                     <div class="panel-title">
-                                                        Textboxes
-                                                        <ul class="panel-tools">
-                                                            <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                                                            <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                                                            <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                                                        </ul>
+                                                        My Files <span class="label label-danger">29</span>
                                                     </div>
-                                                    <div class="panel-body table-responsive">
+                                                    <div class="panel-body">
 
-                                                        <table id="" class="table data display table-bordered table-condensed">
-                                                            <thead class="">
-                                                            <tr>
-                                                                <th>id</th>
-                                                                <th>created</th>
-                                                                <th>image</th>
-                                                                <th>title</th>
-                                                                <th>modified</th>
-                                                                <th>actions</th>
-                                                            </tr>
-                                                            </thead>
+                                                        <table class="table table-dic table-hover ">
                                                             <tbody>
-                                                                <tr>
-                                                                    <td class="context-menu-one">image</td>
-                                                                    <td class="context-menu-one">image</td>
-                                                                    <td class="context-menu-one">image</td>
-                                                                    <td class="context-menu-one">image</td>
-                                                                    <td class="context-menu-one">image</td>
-                                                                    <td>
-                                                                        <a class="btn btn-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                                                                        <a class="btn btn-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                                                    </td>
-                                                                </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-folder-o"></i>Projects</td>
+                                                                <td>Folder</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-file-archive-o"></i>27 March Backup</td>
+                                                                <td>Zip</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-file-code-o"></i>Kode Front-End Theme</td>
+                                                                <td>Html</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-file-pdf-o"></i>Documents</td>
+                                                                <td>Pdf</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-folder-o"></i>Themes</td>
+                                                                <td>Folder</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fa fa-folder-o"></i>Uploaded Files</td>
+                                                                <td>Folder</td>
+                                                                <td class="text-r">27/2/2015 12:34 AM</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3"><i class="fa fa-plus" aria-hidden="true"></i>Add Files</td>
+                                                            </tr>
                                                             </tbody>
                                                         </table>
 
-
                                                     </div>
-
                                                 </div>
+                                                <!-- End Files -->
+
                                             </div>
                                             <!-- End Panel -->
                                         </div>
@@ -262,12 +306,7 @@
                                         <div class="col-md-12 ">
                                             <div class="panel panel-default">
                                                 <div class="panel-title">
-                                                    Textboxes
-                                                    <ul class="panel-tools">
-                                                        <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                                                        <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                                                        <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                                                    </ul>
+                                                    Metaboxes
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="form-horizontal">

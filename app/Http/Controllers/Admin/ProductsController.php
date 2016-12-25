@@ -9,6 +9,7 @@ use App\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Response;
 
 class ProductsController extends Controller
 {
@@ -19,12 +20,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
-       /*$products = Product::with(['category' => function($query){
-            $query->select('name');
-        }])->get();*/
+
         $products = Product::get();
         $products->load('category');
-        return view('admin.products.index',compact('products'));
+        $products->load('media');
+
+        return view('admin.products.index',compact('products','selectCategories'));
+
     }
 
     /**
@@ -48,7 +50,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
     }
 
     /**
@@ -57,9 +60,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $products = Product::select('id','isbn','name','status')->get();
+
+        return Response::json($products,200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
@@ -68,9 +73,18 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id=null)
+    public function edit($id)
     {
-        return view('admin.products.edit');
+        $selectCategories = Category::select('name')->distinct()->get();
+        $status = Product::select('status')->distinct()->get();
+
+        $product = Product::findOrFail($id);
+
+        $data['product'] =$product;
+        $data['selectCategories'] =$selectCategories;
+        $data['status'] =$status;
+        return Response::json($data,200,[],JSON_NUMERIC_CHECK);
+
     }
 
     /**

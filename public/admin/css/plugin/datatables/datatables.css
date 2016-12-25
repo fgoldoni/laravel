@@ -5,7 +5,6 @@ table.dataTable {
   width: 100%;
   margin: 0 auto;
   clear: both;
-  border-collapse: separate;
   border-spacing: 0;
   /*
    * Header and footer styles
@@ -22,7 +21,7 @@ table.dataTable tfoot th {
 }
 table.dataTable thead th,
 table.dataTable thead td {
-  padding: 2px 20px 20px 15px;
+  padding: 16px 18px;
   border-bottom: 1px solid #ccc;
 }
 table.dataTable thead th:active,

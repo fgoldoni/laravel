@@ -1,10 +1,12 @@
 @extends('layouts.admin.default')
 
 @section('content')
+
     <div id ="app" class="content">
         <div class="container-default">
             <!-- Start Page Header -->
             <div class="page-header">
+
                 <h1 class="title">Data Tables</h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Dashboard</a></li>
@@ -27,6 +29,8 @@
 
             <!-- Start Presentation -->
             <div class="row presentation">
+                <div class="loader" v-if="loader"><img src='img/loading.gif'  alt="loading-img"></div>
+                <edit  :product="product" :categories="categories" :status="status" :loader="loader" ></edit>
 
                 <div class="col-lg-8 col-md-6 titles">
                     <span class="icon color10-bg"><i class="fa fa-table"></i></span>
@@ -45,7 +49,6 @@
             <!-- End Presentation -->
             <div class="container-padding">
 
-
         <!-- Start Row -->
         <div class="row">
             <!-- Start Panel -->
@@ -56,7 +59,7 @@
                     </div>
                     <div class="panel-body table-responsive">
 
-                        <table id="" class="table display data table-bordered table-condensed">
+                        <table id="" class="table display data table-bordered ">
                             <thead class="">
                             <tr>
                                 <th class=""><input type="checkbox"></th>
@@ -76,17 +79,17 @@
                             <tbody>
                             @foreach(json_decode($products) as $product)
                                 <tr>
-                                    <td class="context-menu-one " data-id="{{ $product->id }} "><input type="checkbox"></td>
-                                    <td class="context-menu-one">{{ $product->id }}</td>
-                                    <td class="context-menu-one">{{ $product->isbn }}</td>
-                                    <td class="context-menu-one">{{ $product->name }}</td>
-                                    <td class="context-menu-one">{{ $product->content }}</td>
-                                    <td class="context-menu-one">{{ $product->quantity }}</td>
-                                    <td class="context-menu-one">{{ $product->price }}</td>
-                                    <td class="context-menu-one">{{ $product->category->name }}</td>
-                                    <td class="context-menu-one"> <status :message="{{ $product->status }}" ></status></td>
-                                    <td class="context-menu-one">{{ $product->created_at }}</td>
-                                    <td class="context-menu-one">{{ $product->updated_at }}</td>
+                                    <td class="context-menu-one " data-id="{{ $product->id }}"><input type="checkbox"></td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->id }}</td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->isbn }}</td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->name }}</td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->content }}</td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->quantity }}</td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->price }}</td>
+                                    <td class="context-menu-one text-st" data-id="{{ $product->id }}">{{ $product->category->name }}</td>
+                                    <td class="context-menu-one text-left" data-id="{{ $product->id }}"> <status :message="{{ $product->status }}" ></status></td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->created_at }}</td>
+                                    <td class="context-menu-one text-left" data-id="{{ $product->id }}">{{ $product->updated_at }}</td>
                                     <td>
                                         <a class="btn btn-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
                                         <a class="btn btn-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
