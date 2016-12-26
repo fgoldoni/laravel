@@ -7,7 +7,7 @@
                 <div class="modal-header">
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Large Modal{{ categories }}</h4>
+                    <h4 class="modal-title">Large Modal</h4>
                 </div>
                 <div class="modal-body">
                     <form action="">
@@ -42,10 +42,10 @@
                                                     <li v-for="product in products" >
                                                         <div @click="edit(product.id)" class="radio" :class="type(product.status)">
                                                             <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label  >
+                                                            <label>
                                                                 {{ product.id +"/"+ product.isbn +"/"+ product.name }}
                                                             </label>
-                                                            <span class="right label " :class="label(product.status)"> 16.9%</span>
+                                                            <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -385,6 +385,7 @@
                 product : [],
                 categories : [],
                 status : [],
+                media : [],
                 select_category : 0,
                 select_status : 0
             }
@@ -398,22 +399,22 @@
         },
         methods: {
             type(value){
-                if(value == 'Pub'){
+                if(value == 1){
                     return 'radio-success'
-                }else if(value == 'Del'){
-                        return 'radio-danger'
-                }else if(value == 'Not'){
-                     return 'radio-warning'
+                }else if(value == 2){
+                        return 'radio-warning'
+                }else if(value == 3){
+                     return 'radio-danger'
                 }
 
             },
             label(value){
-                 if(value == 'Pub'){
+                 if(value == 1){
                     return 'label-success'
-                }else if(value == 'Del'){
-                        return 'label-danger'
-                }else if(value == 'Not'){
-                     return 'label-warning'
+                }else if(value == 2){
+                        return 'label-warning'
+                }else if(value == 3){
+                     return 'label-danger'
                 }
             },
             edit(id){
@@ -421,6 +422,7 @@
                     this.product = response.data.product
                     this.categories = response.data.selectCategories
                     this.status = response.data.status
+                    this.media = response.data.product.media
                     this.select_category = response.data.product.category
                     this.select_status = response.data.product.status
                 }, (response) => {
@@ -432,12 +434,11 @@
 
             },
             test(id){
-            console.log('testsshhh1'+id)
+               console.log('testss'+id)
             }
         },
         watch:{
           id(value){
-                console.log(value)
              this.edit(value)
           }
         }

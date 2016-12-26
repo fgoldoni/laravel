@@ -64,7 +64,7 @@ class ProductsController extends Controller
      */
     public function show()
     {
-        $products = Product::select('id','isbn','name','status')->get();
+        $products = Product::select('id','isbn','name','quantity','status')->orderBy('name', 'asc')->get();
 
         return Response::json($products,200,[],JSON_NUMERIC_CHECK);
     }
@@ -81,7 +81,7 @@ class ProductsController extends Controller
         $status = DataProductsController::getSelectOptionsStatus();
 
         $product = Product::findOrFail($id);
-
+        $product->load('media');
         $data['product'] =$product;
         $data['selectCategories'] =$selectCategories;
         $data['status'] =$status;
