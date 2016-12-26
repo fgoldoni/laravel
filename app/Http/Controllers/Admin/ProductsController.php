@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Http\Controllers\Includes\DataProductsController;
 use App\Media;
 use App\Meta;
 use App\Product;
@@ -20,12 +21,14 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $categories = DataProductsController::getSelectOptionsCategories();
+        $status     = DataProductsController::getSelectOptionsStatus();
 
         $products = Product::get();
-        $products->load('category');
+        //$products->load('category');
         $products->load('media');
 
-        return view('admin.products.index',compact('products','selectCategories'));
+        return view('admin.products.index',compact('products','categories','status'));
 
     }
 
@@ -36,9 +39,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $produts    = factory(Product::class)->create(['media_id' => 1,'category_id' => 1,'status' => 'Not']);
+        $produts    = factory(Product::class)->create(['media_id' => 2,'category' => 4,'status' => 1]);
         $medias     = factory(Media::class)->create();
-        $categories = factory(Category::class)->create();
         $metas = factory(Meta::class)->create();
     }
 
@@ -75,8 +77,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $selectCategories = Category::select('name')->distinct()->get();
-        $status = Product::select('status')->distinct()->get();
+        $selectCategories = DataProductsController::getSelectOptionsCategories();
+        $status = DataProductsController::getSelectOptionsStatus();
 
         $product = Product::findOrFail($id);
 

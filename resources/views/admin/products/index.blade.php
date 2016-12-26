@@ -1,7 +1,6 @@
 @extends('layouts.admin.default')
 
 @section('content')
-
     <div id ="app" class="content">
         <div class="container-default">
             <!-- Start Page Header -->
@@ -29,24 +28,24 @@
 
             <!-- Start Presentation -->
             <div class="row presentation">
-                <div class="loader" v-if="loader"><img src='img/loading.gif'  alt="loading-img"></div>
-                <edit  :product="product" :categories="categories" :status="status" :loader="loader" ></edit>
+                <!--<div class="loader" v-if="loader"><img src='img/loading.gif'  alt="loading-img"></div>-->
+               <edit :id="id" ></edit>
 
-                <div class="col-lg-8 col-md-6 titles">
-                    <span class="icon color10-bg"><i class="fa fa-table"></i></span>
-                    <h1>Products Management</h1>
-                </div>
+               <div class="col-lg-8 col-md-6 titles">
+                   <span class="icon color10-bg"><i class="fa fa-table"></i></span>
+                   <h1>Products Management</h1>
+               </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <ul class="list-unstyled list">
-                        <li><i class="fa fa-check"></i>View<li>
-                        <li><i class="fa fa-check"></i>Create<li>
-                        <li><i class="fa fa-check"></i>Edit<li>
-                    </ul>
-                </div>
+               <div class="col-lg-4 col-md-6">
+                   <ul class="list-unstyled list">
+                       <li><i class="fa fa-check"></i>View<li>
+                       <li><i class="fa fa-check"></i>Create<li>
+                       <li><i class="fa fa-check"></i>Edit<li>
+                   </ul>
+               </div>
 
-            </div>
-            <!-- End Presentation -->
+           </div>
+           <!-- End Presentation -->
             <div class="container-padding">
 
         <!-- Start Row -->
@@ -69,8 +68,8 @@
                                 <th>Content</th>
                                 <th>quantity</th>
                                 <th>price</th>
-                                <th>category</th>
-                                <th>status</th>
+                                <th>Categories</th>
+                                <th>Status</th>
                                 <th>created</th>
                                 <th>modified</th>
                                 <th>actions</th>
@@ -86,8 +85,8 @@
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->content }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->quantity }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->price }}</td>
-                                    <td class="context-menu-one text-st" data-id="{{ $product->id }}">{{ $product->category->name }}</td>
-                                    <td class="context-menu-one text-left" data-id="{{ $product->id }}"> <status :message="{{ $product->status }}" ></status></td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $categories[$product->category]['name'] }}</td>
+                                    <td class="context-menu-one text-left" data-id="{{ $product->id }}"> <status message="{{ $status[$product->status]['name'] }}" ></status></td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->created_at }}</td>
                                     <td class="context-menu-one text-left" data-id="{{ $product->id }}">{{ $product->updated_at }}</td>
                                     <td>

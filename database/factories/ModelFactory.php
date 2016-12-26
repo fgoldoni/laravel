@@ -45,14 +45,7 @@ $factory->define(App\Media::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Category::class, function (Faker\Generator $faker) {
 
-    return [
-        'name' => $faker->name,
-        'link' => $faker->name,
-        'deleted' => $faker->boolean,
-    ];
-});
 $factory->define(App\Meta::class, function (Faker\Generator $faker) {
 
     return [

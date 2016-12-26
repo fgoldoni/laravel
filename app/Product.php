@@ -8,9 +8,7 @@ class Product extends Model
 {
     protected $guarded = [];
     public $table = "products";
-    public function category(){
-        return $this->belongsTo('App\Category');
-    }
+    
     public function media(){
         return $this->belongsTo('App\Media');
     }

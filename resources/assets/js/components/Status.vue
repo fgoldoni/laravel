@@ -19,7 +19,7 @@
             }else if(this.message == 'Deleted'){
                 this.text = 'label label-danger'
             }else{
-                this.text = 'label label-primary'
+                this.text = 'label label-warning'
             }
         }
     }

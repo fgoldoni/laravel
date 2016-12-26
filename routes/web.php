@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
 Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
     Route::get('products' , 'ProductsController@index');
     Route::get('products/edit/{id}' , 'ProductsController@edit');
+    Route::get('products/editOnly/{id}' , 'ProductsController@edit');
     Route::get('products/create' , 'ProductsController@create');
     Route::get('products/show' , 'ProductsController@show');
 });

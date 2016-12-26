@@ -3,7 +3,7 @@ require('./bootstrap');
 var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
-
+//Vue.config.silent = true
 import  status from  './components/Status.vue';
 import  edit from  './components/Edit.vue';
 
@@ -11,30 +11,14 @@ let vm = new Vue({
     el: '#app',
     components: { status , edit },
     data: {
-        product :   [],
-        categories :   [],
-        status :   [],
-        loader :   false,
-        Pub: "Published",
-        Not: 'Not Published ',
-        Del: 'Deleted'
+        id :   0
     },
     mounted ()  {
         console.log('vue mounted')
     },
     methods: {
         edit(id){
-            this.loader = true
-            this.$http.get('products/edit/'+id).then((response) => {
-                this.product = response.data.product
-                this.categories = response.data.selectCategories
-                this.status = response.data.status
-            }, (response) => {
-                console.log('Error',response)
-            }).then( function () {
-                this.loader = false
-            })
-            $('#edit_modal').modal('show')
+            this.id = id
         }
     }
 
