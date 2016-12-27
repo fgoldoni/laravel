@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('.data').DataTable( {
+        scrollX: true,
         columnDefs: [ {
             orderable: false,
             targets:   [0,-1]

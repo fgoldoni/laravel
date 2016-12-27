@@ -114,7 +114,6 @@ body {
   background: #3d464d;
   color: #58666e;
   margin: 0;
-  line-height: 1.2em;
   outline: 0;
   text-Shadow: 0 0 1px rgba(0, 0, 0, 0.2);
 }
@@ -3674,10 +3673,8 @@ div[data-role="editor-toolbar"] {
   background-color: #EFF7FF;
 }
 thead {
-  font-weight: 600;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
-  font-size: 12px;
   color: #37363e;
 }
 thead .fa {

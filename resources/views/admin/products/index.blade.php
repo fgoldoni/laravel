@@ -51,25 +51,21 @@
         <!-- Start Row -->
         <div class="row">
             <!-- Start Panel -->
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-title">
-                        DAtaTables
-                    </div>
-                    <div class="panel-body table-responsive">
 
-                        <table id="" class="table display data table-bordered ">
+
+
+                        <table id="example" class="display data nowrap table-bordered" cellspacing="0" width="100%">
                             <thead class="">
                             <tr>
                                 <th class=""><input type="checkbox"></th>
                                 <th>id</th>
                                 <th>isbn</th>
                                 <th>name</th>
-                                <th>Content</th>
                                 <th>quantity</th>
                                 <th>price</th>
                                 <th>Categories</th>
                                 <th>Status</th>
+                                <th>Content</th>
                                 <th>created</th>
                                 <th>modified</th>
                                 <th>actions</th>
@@ -82,16 +78,16 @@
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->id }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->isbn }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->name }}</td>
-                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->content }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->quantity }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->price }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $categories[$product->category]['name'] }}</td>
                                     <td class="context-menu-one text-left" data-id="{{ $product->id }}"> <status message="{{ $status[$product->status]['name'] }}" ></status></td>
+                                    <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->content }}</td>
                                     <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->created_at }}</td>
                                     <td class="context-menu-one text-left" data-id="{{ $product->id }}">{{ $product->updated_at }}</td>
                                     <td>
-                                        <a class="btn btn-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                                        <a class="btn btn-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a class="text-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                        <a class="text-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -99,10 +95,9 @@
                         </table>
 
 
-                    </div>
 
-                </div>
-            </div>
+
+
             <!-- End Panel -->
 
 
