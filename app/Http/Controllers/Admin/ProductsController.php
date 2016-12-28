@@ -26,7 +26,7 @@ class ProductsController extends Controller
 
         $products = Product::get();
         //$products->load('category');
-        $products->load('media');
+        //$products->load('metas');
 
         return view('admin.products.index',compact('products','categories','status'));
 
@@ -39,9 +39,12 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $produts    = factory(Product::class)->create(['media_id' => 2,'category' => 4,'status' => 1]);
-        $medias     = factory(Media::class)->create();
+        $produts    = factory(Product::class)->create();
+        $medias     = factory(Media::class)->create(['product_id' => 9]);
         $metas = factory(Meta::class)->create();
+        $produts1    = factory(Product::class)->create();
+        $medias1     = factory(Media::class)->create(['product_id' => 10]);
+        $metas1 = factory(Meta::class)->create();
     }
 
     /**
@@ -81,7 +84,8 @@ class ProductsController extends Controller
         $status = DataProductsController::getSelectOptionsStatus();
 
         $product = Product::findOrFail($id);
-        $product->load('media');
+        $product->load('medias');
+        $product->load('metas');
         $data['product'] =$product;
         $data['selectCategories'] =$selectCategories;
         $data['status'] =$status;

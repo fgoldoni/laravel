@@ -1,5 +1,5 @@
 .ms-container{
-  background: transparent url('../images/switch.png') no-repeat 50% 50%;
+  background: transparent url('../img/switch.png') no-repeat 50% 50%;
   width: 370px;
 }
 
@@ -90,9 +90,4 @@
   background-color: #eee;
   color: #aaa;
   cursor: text;
-}
-
-.multi-select {
-  right: auto !important;
-  left: -9999px !important;
 }

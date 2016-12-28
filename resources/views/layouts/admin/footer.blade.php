@@ -3,7 +3,7 @@
 <!-- ================================================
 jQuery Library
 ================================================ -->
-<script type="text/javascript" src='https://code.jquery.com/jquery-1.12.4.js'></script>
+<script type="text/javascript" src={{ asset('admin/js/jquery.min.js') }}></script>
 
 <!-- ================================================
 Bootstrap Core JavaScript File
@@ -124,19 +124,27 @@ Bootstrap Date Range Picker
 
 
 
+
 <script type="text/javascript" src={{ asset('js/products.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/jquery.contextMenu.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/main.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/datatables/datatables.min.js') }}></script>
 
+<script type="text/javascript" src={{ asset('admin/js/jquery.multi-select.js') }}></script>
 
 <!-- ================================================
 Below codes are only for index widgets
 ================================================ -->
 <!-- Today Sales -->
 <script>
-
-
+$('#callbacks').multiSelect({
+afterSelect: function(values){
+alert("Select value: "+values);
+},
+afterDeselect: function(values){
+alert("Deselect value: "+values);
+}
+});
 </script>
 
 

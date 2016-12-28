@@ -5,7 +5,7 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-
+{{ meta }}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Large Modal</h4>
                 </div>
@@ -21,74 +21,26 @@
                                 <!-- Start Panel -->
                                 <div class="col-md-12">
                                     <!-- Start Browser Stats -->
-                                    <div class="panel panel-widget">
-                                        <div class="panel-title">
-                                            Browser Stats
-                                            <!-- Start Searchbox -->
-                                            <ul class="panel-tools">
-                                                <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                                                <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                                                <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="panel-body basic-list">
-                                            <div>
-                                                <form class="search">
-                                                    <input type="text" class="form-control" placeholder="Search ...">
-                                                </form>
-                                            </div>
-                                            <ul >
-                                                <div class="fixed-list">
-                                                    <li v-for="product in products" >
-                                                        <div @click="edit(product.id)" class="radio" :class="type(product.status)">
-                                                            <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label>
-                                                                {{ product.id +"/"+ product.isbn +"/"+ product.name }}
-                                                            </label>
-                                                            <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio radio-success">
-                                                            <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label >
-                                                                Safari
-                                                            </label>
-                                                            <span class="right label label-success">15.5%</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio radio-warning">
-                                                            <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label >
-                                                                Opera
-                                                            </label>
-                                                            <span class="right label label-warning">15.5%</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio radio-warning">
-                                                            <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label >
-                                                                Internet Explorer
-                                                            </label>
-                                                            <span class="right label label-warning">15.5%</span>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="radio radio-success">
-                                                            <input type="radio"  id="radio4" value="option2" checked>
-                                                            <label >
-                                                                Mobile
-                                                            </label>
-                                                            <span class="right label label-success">15.5%</span>
-                                                        </div>
-                                                    </li>
-                                                </div>
-                                            </ul>
+                                    <!-- Start Browser Stats -->
 
+                                        <div class="panel panel-widget">
+                                            <div class="panel-title">
+                                                Browser Stats
+                                                <ul class="panel-tools panel-tools-hover">
+                                                    <li ><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                                                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                                                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="panel-body">
+                                                <input type="text" class="form-control" placeholder="Search ...">
+                                                <ul class="basic-list">
+                                                    <li v-for="product in products" @click="edit(product.id)" class="sortable">{{ product.id +"/"+ product.name }}
+                                                        <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
                                     <!-- End Browser Stats -->
                                 </div>
                                 <!-- End Panel -->
@@ -99,10 +51,14 @@
                             <!-- Start Tab Panel -->
                             <div class="col-md-12 col-lg-8 padding-0">
                                 <div class="col-md-12">
-                                    <div class="panel panel-transparent">
+                                    <div class="panel panel-widget">
                                         <div class="panel-title">
                                             Browser Stats
-
+                                            <ul class="panel-tools panel-tools-hover">
+                                                <li ><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                                                <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                                                <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                            </ul>
                                         </div>
                                         <div class="panel-body">
 
@@ -245,44 +201,27 @@
                                                                 <!-- Start Files -->
                                                                 <div class="panel panel-widget" style="height:450px;">
                                                                     <div class="panel-title">
-                                                                        My Files <span class="label label-danger">29</span>
+                                                                        My Files <span class="label label-danger">{{ media_length }}</span>
                                                                     </div>
                                                                     <div class="panel-body">
 
                                                                         <table class="table table-dic table-hover ">
+                                                                            <thead >
+                                                                            <tr>
+                                                                                <th class=""><input type="checkbox"></th>
+                                                                                <th>media</th>
+                                                                                <th>title</th>
+                                                                                <th>status</th>
+                                                                                <th>size</th>
+                                                                            </tr>
+                                                                            </thead>
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-folder-o"></i>Projects</td>
-                                                                                <td>Folder</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-file-archive-o"></i>27 March Backup</td>
-                                                                                <td>Zip</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-file-code-o"></i>Kode Front-End Theme</td>
-                                                                                <td>Html</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-file-pdf-o"></i>Documents</td>
-                                                                                <td>Pdf</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-folder-o"></i>Themes</td>
-                                                                                <td>Folder</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><i class="fa fa-folder-o"></i>Uploaded Files</td>
-                                                                                <td>Folder</td>
-                                                                                <td class="text-r">27/2/2015 12:34 AM</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td colspan="3"><i class="fa fa-plus" aria-hidden="true"></i>Add Files</td>
+                                                                            <tr v-for="media in medias">
+                                                                                <td :data-id="media.id"><input type="checkbox"></td>
+                                                                                <td><img :src="media.url" alt="img" class="img"></td>
+                                                                                <td>{{ media.name }}</td>
+                                                                                <td>{{ media.status }}</td>
+                                                                                <td class="text-r">{{ media.size }}</td>
                                                                             </tr>
                                                                             </tbody>
                                                                         </table>
@@ -296,8 +235,6 @@
                                                         </div>
                                                         <!-- End Row -->
                                                     </div>
-
-
                                                     <div role="tabpanel" class="tab-pane" id="messages9">
                                                         <div class="col-md-12 ">
                                                             <div class="panel panel-transparent">
@@ -306,8 +243,6 @@
                                                                 </div>
                                                                 <div class="panel-body">
                                                                     <div class="form-horizontal">
-
-
                                                                         <div class="form-group">
                                                                             <label for="id" class="col-sm-2 control-label form-label">id</label>
                                                                             <div class="col-sm-10">
@@ -319,30 +254,25 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="created_at" class="col-sm-2 control-label form-label">created</label>
-                                                                            <div class="col-sm-10">
-                                                                                <label class="sr-only" for="created_at">created</label>
+                                                                            <label class="col-sm-2 control-label form-label">Meta Keywords</label>
+                                                                            <div v-for="item in meta" :value="item.id">{{ item.tag }}</div>
+                                                                            <div class="col-sm-5">
+                                                                                <select id='callbacks' multiple='multiple'>
+                                                                                    <option v-for="item in meta" :value="item.id">{{ item.tag }}</option>
+
+                                                                                    <option value='elem_100'>elem 100</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-sm-5">
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input type="text" class="form-control" id="created_at" name="created_at" placeholder="created" disabled>
+                                                                                    <input type="text" class="form-control" id="meta" name="meta" placeholder="Meta" >
+                                                                                </div>
+                                                                                <div class="input-group">
+                                                                                    <i class="fa fa-plus" aria-hidden="true"></i> Meta
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-
-
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-2 control-label form-label">Meta Keywords</label>
-                                                                            <div class="col-sm-10">
-                                                                                <textarea class="form-control" rows="6" id="content" name="content" placeholder="Meta Keywords..."></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-2 control-label form-label">Meta description</label>
-                                                                            <div class="col-sm-10">
-                                                                                <textarea class="form-control" rows="6" id="content" name="content" placeholder="Type your message..."></textarea>
-                                                                            </div>
-                                                                        </div>
-
                                                                     </div>
 
 
@@ -385,9 +315,11 @@
                 product : [],
                 categories : [],
                 status : [],
-                media : [],
+                medias : [],
+                meta : [],
                 select_category : 0,
-                select_status : 0
+                select_status : 0,
+                media_length: 0
             }
         },
         mounted() {
@@ -422,7 +354,9 @@
                     this.product = response.data.product
                     this.categories = response.data.selectCategories
                     this.status = response.data.status
-                    this.media = response.data.product.media
+                    this.medias = response.data.product.medias
+                    this.meta = response.data.product.metas
+                    this.media_length = this.medias.length
                     this.select_category = response.data.product.category
                     this.select_status = response.data.product.status
                 }, (response) => {

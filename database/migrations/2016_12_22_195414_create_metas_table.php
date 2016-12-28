@@ -15,11 +15,10 @@ class CreateMetasTable extends Migration
     {
         Schema::create('metas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titre')->default('');
-            $table->text('tag')->nullable();
-            $table->longText('description')->nullable();
+            $table->string('tag')->nullable();
             $table->timestamps();
         });
+
 
         Schema::create('meta_product', function (Blueprint $table) {
             $table->increments('id');

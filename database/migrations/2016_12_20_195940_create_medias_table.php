@@ -15,18 +15,16 @@ class CreateMediasTable extends Migration
     {
         Schema::create('medias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titre',60)->default('');
-            $table->string('link')->default('');
-            $table->string('used')->default('');
-            $table->string('type')->default(0);
-            $table->enum('status', ['Published', 'Not published','Deleted'])->default('Not published');
-            $table->string('deleted')->default(0);
+            $table->string('name',100)->default('');
+            $table->string('type')->default('');
+            $table->string('url')->default('');
+            $table->string('size')->default('');
+            $table->string('used')->default(0);
+            $table->unsignedTinyInteger('status')->nullable();
             $table->timestamps();
         });
 
-        Schema::table('products', function (Blueprint $table) {            
-            $table->integer('media_id')->unsigned()->index();
-        });
+
     }
 
     /**

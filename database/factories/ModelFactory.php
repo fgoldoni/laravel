@@ -31,16 +31,21 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'content' => $faker->text(100),
         'quantity' => $faker->numberBetween(0,1000),
         'price' => $faker->numberBetween(0,1000000),
-        'link' => $faker->domainName
+        'url' => $faker->domainName,
+        'category' => $faker->numberBetween(1,4),
+        'status' => $faker->numberBetween(1,3)
     ];
 });
 
 $factory->define(App\Media::class, function (Faker\Generator $faker) {
 
     return [
-        'titre' => $faker->name,
-        'link' => $faker->name,
-        'used' => $faker->userAgent,
+        'name' => $faker->userName,
+        'type' => $faker->mimeType,
+        'url' => $faker->imageUrl(50,50,null,true,null,false),
+        'size' => $faker->numberBetween(1,1000),
+        'used' => $faker->firstName,
+        'status' => $faker->numberBetween(1,3)
     ];
 });
 
@@ -49,9 +54,7 @@ $factory->define(App\Media::class, function (Faker\Generator $faker) {
 $factory->define(App\Meta::class, function (Faker\Generator $faker) {
 
     return [
-        'titre' => $faker->title,
-        'tag' => $faker->name,
-        'description' => $faker->text(100)
+        'tag' => $faker->jobTitle
     ];
 });
 

@@ -8,7 +8,7 @@ class Media extends Model
 {
     public $table = "medias";
     protected $guarded = [];
-    public function products(){
-        return $this->hasMany('App\Product');
+    public function product(){
+        return $this->belongsTo('App\Product');
     }
 }
