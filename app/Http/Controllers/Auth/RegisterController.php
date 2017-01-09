@@ -50,7 +50,7 @@ class RegisterController extends Controller
 
         $user->notify(new RegisteredUser());
 
-        return  redirect('/login')->with('success','Votre Compte a bien ete cree, confirmer par email');
+        return  redirect('/login')->with('success','Votre compte a été créé, confirmer par l\'email qui vous a été envoyé');
     }
 
 
