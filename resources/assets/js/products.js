@@ -7,11 +7,12 @@ Vue.use(require('vue-resource'));
 import  status from  './components/Status.vue';
 import  edit from  './components/Edit.vue';
 
-let vm = new Vue({
+let vm;
+vm = new Vue({
     el: '#app',
-    components: { status , edit },
+    components: {status, edit},
     data: {
-        id :   0
+        id: 0
     },
     mounted ()  {
         console.log('vue mounted')
@@ -19,7 +20,32 @@ let vm = new Vue({
     methods: {
         edit(id){
             this.id = id
-        }
+        },
+        destroy(id){
+            this.$http.delete('products/destroy/' + id).then((response) => {
+                console.log('Success', response)
+                location.reload(true)
+            }, (response) => {
+                console.log('Error', response)
+            });
+        },
+        update(id, status){
+            this.$http.put('products/update/' + id, {
+                status: status
+            }).then((response) => {
+                console.log('Success', response)
+                location.reload(true)
+            }, (response) => {
+                console.log('Error', response)
+            });
+        },
+        add(){
+            console.log('add');
+            $('#edit_modal').modal('show')
+        },
+        refresh(){
+            location.reload(true)
+        },
     }
 
 });
@@ -37,19 +63,19 @@ $(document).ready(function() {
                     vm.edit(id)
                     break;
                 case 'published':
-                    console.log('published');
+                    vm.update(id,'1')
                     break;
                 case 'not_published':
-                   console.log('not_published');
+                    vm.update(id,'2')
                     break;
                 case 'delete':
-
+                    vm.destroy(id)
                     break;
                 default:
 
                     break;
             }
-            console.log(options);
+            //console.log(options);
         },
         items: {
             "edit"    : {name: "Edit", icon: "fa-edit"},
@@ -59,7 +85,7 @@ $(document).ready(function() {
         }
     });
     $('.context-menu-one').on('click', function(e){
-        console.log('clicked', this);
+        //console.log('clicked', this);
     });
 
 

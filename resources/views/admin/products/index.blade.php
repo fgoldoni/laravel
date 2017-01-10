@@ -3,7 +3,6 @@
 
 @section('content')
     <div id ="app" class="content">
-        <div v-if="loader" class="loading"><img src="img/loading.gif" alt="loading-img"></div>
         <edit :id="id" ></edit>
         <!-- Start Page Header -->
         <div class="page-header">
@@ -18,7 +17,8 @@
             <div class="right">
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="index.html" class="btn btn-light">Dashboard</a>
-                    <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+                    <a href="#" class="btn btn-light" @click="add"><i class="fa fa-plus"></i></a>
+                    <a href="#" class="btn btn-light" @click="refresh"><i class="fa fa-refresh"></i></a>
                     <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
                     <a href="#" class="btn btn-light" id="topstats"><i class="fa fa-line-chart"></i></a>
                 </div>
@@ -60,8 +60,8 @@
                         <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->created_at }}</td>
                         <td class="context-menu-one text-left" data-id="{{ $product->id }}">{{ $product->updated_at }}</td>
                         <td>
-                            <a class="text-warning btn-icon"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                            <a class="text-danger btn-icon"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a class="btn btn-warning btn-icon"  @click="edit({{ $product->id }})"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                            <a class="text-danger btn btn-danger btn-icon" @click="destroy({{ $product->id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                 @endforeach

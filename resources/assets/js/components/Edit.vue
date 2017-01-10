@@ -283,7 +283,8 @@
                         <!-- End Row -->
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" @click="save(product)">Save changes</button>
+                    <button type="button" class="btn btn-default" @click="save(product)">Save</button>
+                    <button type="button" class="btn btn-danger" @click="destroy(product)">Delete</button>
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -296,7 +297,6 @@
         props: ['id'],
         data(){
             return{
-                loader:false,
                 products: [],
                 product : [],
                 categories : [],
@@ -337,7 +337,7 @@
                 }
             },
             edit(id){
-            this.loader = true;
+                 //this.loader = true;
                  this.$http.get('products/edit/'+id).then((response) => {
                     var metas = []
                     var my_metas = []
@@ -362,7 +362,7 @@
                 }, (response) => {
                     console.log('Error',response)
                 }).then( function () {
-                    this.loader = false
+                    //this.loader = false
                 })
                 $('#edit_modal').modal('show')
 
@@ -371,16 +371,23 @@
                console.log('testss'+id)
             },
             save(product){
-
-               this.$http.put( 'products/update/'+product.id,{
+               this.$http.post( 'products/save/'+product.id,{
                    isbn    : product.isbn,
                    name    : product.name,
                    content : product.content,
                    quantity : product.quantity,
-                   category: this.select_category,
                    price   : product.price,
-                   status  : this.select_status
+                   category: this.select_category,
+                   status  : this.select_status,
                }).then((response) => {
+                console.log('Success',response)
+                location.reload(true)
+              }, (response) => {
+                console.log('Error',response)
+              });
+            },
+            destroy(product){
+                this.$http.delete('products/destroy/'+product.id).then((response) => {
                 console.log('Success',response)
                 location.reload(true)
               }, (response) => {

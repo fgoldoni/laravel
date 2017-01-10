@@ -40,7 +40,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $produts    = factory(Product::class)->create();
+       $produts    = factory(Product::class)->create();
         $medias     = factory(Media::class)->create(['product_id' => 9]);
         $metas = factory(Meta::class)->create();
         $produts1    = factory(Product::class)->create();
@@ -62,9 +62,8 @@ class ProductsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function show()
     {
@@ -98,11 +97,26 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ProductResquest|Request $request
+     * @param Resquest|Request $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductResquest $request, $id)
+    public function update(Request $request, $id)
+    {
+        $inputs = $request->all();
+        $product = Product::findOrFail($id);
+        $product->update($inputs);
+        $data['id'] = $id;
+        $data['success'] ='Item has been updated successfully';
+        return Response::json($data,200,[]);
+    }
+
+    /**
+     * @param ProductResquest $request
+     * @param $id
+     * @return mixed
+     */
+    public function save(ProductResquest $request, $id)
     {
         $inputs = $request->all();
         $product = Product::findOrFail($id);
@@ -120,6 +134,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+        $data['success'] ='Item has been deleted successfully';
+        return Response::json($data,200,[]);
     }
 }
