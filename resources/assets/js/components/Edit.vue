@@ -7,8 +7,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Large Modal</h4>
                 </div>
+
                 <div class="modal-body">
-                    <form action="">
                         <div class="row">
                         </div>
                         <!-- Start Row -->
@@ -32,10 +32,10 @@
                                         <div class="panel-body">
                                             <input type="text" class="form-control" placeholder="Search ...">
                                             <ul class="basic-list">
-                                                <li v-for="product in products" @click="edit(product.id)"
+                                                <!--<li v-for="product in products" @click="edit(product.id)"
                                                     class="sortable">{{ product.id +"/"+ product.name }}
                                                     <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
-                                                </li>
+                                                </li>-->
                                             </ul>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                                                                 <label class="sr-only" for="id">id</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-                                                                                    <input :value ="product.id" type="text" class="form-control" id="id" name="id" placeholder="id" disabled>
+                                                                                    <input :value ="product.id" v-model="product.id" type="text" class="form-control" id="id" name="id" placeholder="id" disabled>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -90,7 +90,7 @@
                                                                                 <label class="sr-only" for="created_at">created</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input :value ="product.created_at" type="text" class="form-control" id="created_at" name="created_at" placeholder="created" disabled>
+                                                                                    <input :value ="product.created_at" v-model ="product.created_at" type="text" class="form-control" id="created_at" name="created_at" placeholder="created" disabled>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -100,7 +100,7 @@
                                                                                 <label class="sr-only" for="isbn">isbn</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input :value ="product.isbn" type="text" class="form-control" id="isbn" name="isbn" placeholder="isbn">
+                                                                                    <input :value ="product.isbn" v-model ="product.isbn" type="text" class="form-control" id="isbn" name="isbn" placeholder="isbn">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -110,7 +110,7 @@
                                                                                 <label class="sr-only" for="name">name</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input :value ="product.name" type="text" class="form-control" id="name" name="name" placeholder="name">
+                                                                                    <input :value ="product.name" v-model ="product.name" type="text" class="form-control" id="name" name="name" placeholder="name">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -120,7 +120,7 @@
                                                                                 <label class="sr-only" for="quantity">quantity</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input :value ="product.quantity" type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity">
+                                                                                    <input :value ="product.quantity" v-model ="product.quantity" type="text" class="form-control" id="quantity" name="quantity" placeholder="quantity">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -130,7 +130,7 @@
                                                                                 <label class="sr-only" for="price">price</label>
                                                                                 <div class="input-group">
                                                                                     <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input :value ="product.price" type="text" class="form-control" id="price" name="price" placeholder="price">
+                                                                                    <input :value ="product.price" v-model ="product.price" type="text" class="form-control" id="price" name="price" placeholder="price">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -160,7 +160,7 @@
                                                                         <div class="form-group">
                                                                             <label class="col-sm-2 control-label form-label">Full description</label>
                                                                             <div class="col-sm-10">
-                                                                                <textarea  :value ="product.content" class="form-control" rows="6" id="content" name="content" placeholder="Type your message..."></textarea>
+                                                                                <textarea  :value ="product.content" v-model ="product.content" class="form-control" rows="6" id="content" name="content" placeholder="Type your message..."></textarea>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
@@ -281,10 +281,9 @@
 
                         </div>
                         <!-- End Row -->
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default">Save changes</button>
+                    <button type="button" class="btn btn-default" @click="save(product)">Save changes</button>
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -297,6 +296,7 @@
         props: ['id'],
         data(){
             return{
+                loader:false,
                 products: [],
                 product : [],
                 categories : [],
@@ -337,6 +337,7 @@
                 }
             },
             edit(id){
+            this.loader = true;
                  this.$http.get('products/edit/'+id).then((response) => {
                     var metas = []
                     var my_metas = []
@@ -368,12 +369,30 @@
             },
             test(id){
                console.log('testss'+id)
+            },
+            save(product){
+
+               this.$http.put( 'products/update/'+product.id,{
+                   isbn    : product.isbn,
+                   name    : product.name,
+                   content : product.content,
+                   quantity : product.quantity,
+                   category: this.select_category,
+                   price   : product.price,
+                   status  : this.select_status
+               }).then((response) => {
+                console.log('Success',response)
+                location.reload(true)
+              }, (response) => {
+                console.log('Error',response)
+              });
             }
         },
         watch:{
           id(value){
              this.edit(value)
           }
-        }
+        },
+
     }
 </script>

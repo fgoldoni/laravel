@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Includes\DataProductsController;
+use App\Http\Requests\ProductResquest;
 use App\Media;
 use App\Meta;
 use App\Product;
@@ -97,13 +98,18 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param ProductResquest|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductResquest $request, $id)
     {
-        //
+        $inputs = $request->all();
+        $product = Product::findOrFail($id);
+        $product->update($inputs);
+        $data['id'] = $id;
+        $data['success'] ='Item has been saved successfully';
+        return Response::json($data,200,[]);
     }
 
     /**

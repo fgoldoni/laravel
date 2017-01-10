@@ -3,6 +3,7 @@
 
 @section('content')
     <div id ="app" class="content">
+        <div v-if="loader" class="loading"><img src="img/loading.gif" alt="loading-img"></div>
         <edit :id="id" ></edit>
         <!-- Start Page Header -->
         <div class="page-header">
@@ -27,8 +28,6 @@
         </div>
         <!-- End Page Header -->
         <div class="container-padding">
-
-
             <table  class="display data nowrap table-bordered" cellspacing="0" width="100%">
                 <thead class="">
                 <tr>

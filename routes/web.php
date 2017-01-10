@@ -41,6 +41,7 @@ Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
     Route::get('products/editOnly/{id}' , 'ProductsController@edit');
     Route::get('products/create' , 'ProductsController@create');
     Route::get('products/show' , 'ProductsController@show');
+    Route::put('products/update/{product}' , 'ProductsController@update')->name('products.update');
 });
 
 
