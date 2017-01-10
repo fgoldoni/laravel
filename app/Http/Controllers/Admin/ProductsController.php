@@ -82,10 +82,11 @@ class ProductsController extends Controller
     {
         $selectCategories = DataProductsController::getSelectOptionsCategories();
         $status = DataProductsController::getSelectOptionsStatus();
-
+        $metas = Meta::select('id','tag')->orderBy('tag', 'asc')->get();
         $product = Product::findOrFail($id);
         $product->load('medias');
         $product->load('metas');
+        $data['metas'] =$metas;
         $data['product'] =$product;
         $data['selectCategories'] =$selectCategories;
         $data['status'] =$status;

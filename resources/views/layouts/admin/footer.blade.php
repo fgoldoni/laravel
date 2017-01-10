@@ -129,8 +129,8 @@ Bootstrap Date Range Picker
 <script type="text/javascript" src={{ asset('admin/js/jquery.contextMenu.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/main.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/datatables/datatables.min.js') }}></script>
-
 <script type="text/javascript" src={{ asset('admin/js/jquery.multi-select.js') }}></script>
+
 
 <!-- ================================================
 Below codes are only for index widgets
@@ -139,7 +139,7 @@ Below codes are only for index widgets
 <script>
 $('#callbacks').multiSelect({
 afterSelect: function(values){
-alert("Select value: "+values);
+console.log("Select value: "+values);
 },
 afterDeselect: function(values){
 alert("Deselect value: "+values);

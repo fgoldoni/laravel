@@ -2,10 +2,8 @@
 
     <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-
             <div class="modal-content">
                 <div class="modal-header">
-{{ meta }}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Large Modal</h4>
                 </div>
@@ -22,32 +20,30 @@
                                 <div class="col-md-12">
                                     <!-- Start Browser Stats -->
                                     <!-- Start Browser Stats -->
-
-                                        <div class="panel panel-widget">
-                                            <div class="panel-title">
-                                                Browser Stats
-                                                <ul class="panel-tools panel-tools-hover">
-                                                    <li ><a class="icon"><i class="fa fa-refresh"></i></a></li>
-                                                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
-                                                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="panel-body">
-                                                <input type="text" class="form-control" placeholder="Search ...">
-                                                <ul class="basic-list">
-                                                    <li v-for="product in products" @click="edit(product.id)" class="sortable">{{ product.id +"/"+ product.name }}
-                                                        <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                    <div class="panel panel-widget">
+                                        <div class="panel-title">
+                                            Browser Stats
+                                            <ul class="panel-tools panel-tools-hover">
+                                                <li><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                                                <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                                                <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                                            </ul>
                                         </div>
+                                        <div class="panel-body">
+                                            <input type="text" class="form-control" placeholder="Search ...">
+                                            <ul class="basic-list">
+                                                <li v-for="product in products" @click="edit(product.id)"
+                                                    class="sortable">{{ product.id +"/"+ product.name }}
+                                                    <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <!-- End Browser Stats -->
                                 </div>
                                 <!-- End Panel -->
                             </div>
                             <!-- End Row -->
-
-
                             <!-- Start Tab Panel -->
                             <div class="col-md-12 col-lg-8 padding-0">
                                 <div class="col-md-12">
@@ -55,26 +51,22 @@
                                         <div class="panel-title">
                                             Browser Stats
                                             <ul class="panel-tools panel-tools-hover">
-                                                <li ><a class="icon"><i class="fa fa-refresh"></i></a></li>
+                                                <li><a class="icon"><i class="fa fa-refresh"></i></a></li>
                                                 <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
                                                 <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="panel-body">
-
                                             <div role="tabpanel">
-
-                                                <!-- Nav tabs -->
+                                            <!-- Nav tabs -->
                                                 <ul class="nav nav-tabs font-title-tab" role="tablist">
                                                     <li role="presentation" class="active"><a href="#home9" aria-controls="home9" role="tab" data-toggle="tab">Main</a></li>
                                                     <li role="presentation"><a href="#profile9" aria-controls="profile9" role="tab" data-toggle="tab">Image</a></li>
                                                     <li role="presentation"><a href="#messages9" aria-controls="messages9" role="tab" data-toggle="tab">Meta</a></li>
                                                 </ul>
-
                                                 <!-- Tab panes -->
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane active clearfix" id="home9">
-
                                                         <div class="col-md-12 ">
                                                             <div class="panel panel-transparent">
                                                                 <div class="panel-title">
@@ -82,8 +74,6 @@
                                                                 </div>
                                                                 <div class="panel-body">
                                                                     <div class="form-horizontal">
-
-
                                                                         <div class="form-group">
                                                                             <label for="id" class="col-sm-2 control-label form-label">id</label>
                                                                             <div class="col-sm-10">
@@ -255,12 +245,8 @@
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label class="col-sm-2 control-label form-label">Meta Keywords</label>
-                                                                            <div v-for="item in meta" :value="item.id">{{ item.tag }}</div>
                                                                             <div class="col-sm-5">
-                                                                                <select id='callbacks' multiple='multiple'>
-                                                                                    <option v-for="item in meta" :value="item.id">{{ item.tag }}</option>
-
-                                                                                    <option value='elem_100'>elem 100</option>
+                                                                                <select :id='multiselect_id' multiple='multiple'>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-sm-5">
@@ -319,7 +305,8 @@
                 meta : [],
                 select_category : 0,
                 select_status : 0,
-                media_length: 0
+                media_length: 0,
+                multiselect_id: 'callbacks'
             }
         },
         mounted() {
@@ -351,14 +338,26 @@
             },
             edit(id){
                  this.$http.get('products/edit/'+id).then((response) => {
+                    var metas = []
+                    var my_metas = []
                     this.product = response.data.product
                     this.categories = response.data.selectCategories
                     this.status = response.data.status
                     this.medias = response.data.product.medias
-                    this.meta = response.data.product.metas
+                    this.meta = response.data.metas
                     this.media_length = this.medias.length
                     this.select_category = response.data.product.category
                     this.select_status = response.data.product.status
+                    $.each(this.meta, function(key, value) {
+                        metas[value.id] = (value.tag)
+                    });
+                    $.each(response.data.product.metas, function(key, value) {
+                        my_metas.push(''+value.id)
+                    });
+                    for (var meta in metas) {
+                      $('#' + this.multiselect_id).multiSelect('addOption', { value: meta, text: metas[meta] });
+                    }
+                    $('#' + this.multiselect_id).multiSelect('select', my_metas);
                 }, (response) => {
                     console.log('Error',response)
                 }).then( function () {
