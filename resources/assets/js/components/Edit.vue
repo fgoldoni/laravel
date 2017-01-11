@@ -192,6 +192,11 @@
                                                                 <div class="panel panel-widget" style="height:450px;">
                                                                     <div class="panel-title">
                                                                         My Files <span class="label label-danger">{{ media_length }}</span>
+
+                                                                        <ul class="panel-tools">
+                                                                            <li ><input type="file" class="form-control" id="input001"></li>
+                                                                            <li ><input type="submit"></li>
+                                                                        </ul>
                                                                     </div>
                                                                     <div class="panel-body">
 
@@ -203,15 +208,20 @@
                                                                                 <th>title</th>
                                                                                 <th>status</th>
                                                                                 <th>size</th>
+                                                                                <th class="text-r">Actions</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                            <tr v-for="media in medias">
+                                                                            <tr id=" media" v-for="media in medias">
                                                                                 <td :data-id="media.id"><input type="checkbox"></td>
                                                                                 <td><img :src="media.url" alt="img" class="img"></td>
                                                                                 <td>{{ media.name }}</td>
                                                                                 <td>{{ media.status }}</td>
                                                                                 <td class="text-r">{{ media.size }}</td>
+                                                                                <td class="text-r">
+                                                                                    <a class="btn-sm link"  @click="renameMedia(media)"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                                                                    <a class="btn-sm link" @click="destroyMedia(media)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                                                </td>
                                                                             </tr>
                                                                             </tbody>
                                                                         </table>
@@ -234,28 +244,20 @@
                                                                 <div class="panel-body">
                                                                     <div class="form-horizontal">
                                                                         <div class="form-group">
-                                                                            <label for="id" class="col-sm-2 control-label form-label">id</label>
-                                                                            <div class="col-sm-10">
-                                                                                <label class="sr-only" for="id">id</label>
-                                                                                <div class="input-group">
-                                                                                    <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input type="text" class="form-control" id="id" name="id" placeholder="id" disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
                                                                             <label class="col-sm-2 control-label form-label">Meta Keywords</label>
                                                                             <div class="col-sm-5">
                                                                                 <select :id='multiselect_id' multiple='multiple'>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="col-sm-5">
-                                                                                <div class="input-group">
-                                                                                    <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
-                                                                                    <input type="text" class="form-control" id="meta" name="meta" placeholder="Meta" >
+                                                                                <div class="col-sm-10">
+                                                                                    <div class="input-group">
+                                                                                        <div class="input-group-addon"><i class="fa fa-pencil-square-o"></i></div>
+                                                                                        <input type="text" v-model="add_meta" class="form-control" id="meta" name="meta" placeholder="Meta" >
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="input-group">
-                                                                                    <i class="fa fa-plus" aria-hidden="true"></i> Meta
+                                                                                <div class="form-group col-sm-2">
+                                                                                    <button @click="addMeta(add_meta)" type="button" class="btn btn-default">Submit</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -299,6 +301,8 @@
             return{
                 products: [],
                 product : [],
+                multi_select_items : [],
+                add_meta: '',
                 categories : [],
                 status : [],
                 medias : [],
@@ -359,6 +363,7 @@
                       $('#' + this.multiselect_id).multiSelect('addOption', { value: meta, text: metas[meta] });
                     }
                     $('#' + this.multiselect_id).multiSelect('select', my_metas);
+                    this.multi_select_items = my_metas
                 }, (response) => {
                     console.log('Error',response)
                 }).then( function () {
@@ -371,7 +376,18 @@
                console.log('testss'+id)
             },
             save(product){
-               this.$http.post( 'products/save/'+product.id,{
+               var items = $('#callbacks option:selected');
+               var selected = [];
+               $(items).each(function(index, brand){
+                    selected.push($(this).val());
+               });
+               var url
+               if(selected.length > 0){
+                    url = 'products/save/'+product.id+'/'+selected
+               }else{
+                    url = 'products/save/'+product.id
+               }
+               this.$http.post( url ,{
                    isbn    : product.isbn,
                    name    : product.name,
                    content : product.content,
@@ -381,18 +397,48 @@
                    status  : this.select_status,
                }).then((response) => {
                 console.log('Success',response)
-                location.reload(true)
+                    location.reload(true)
               }, (response) => {
                 console.log('Error',response)
               });
             },
             destroy(product){
-                this.$http.delete('products/destroy/'+product.id).then((response) => {
+                this.$http.delete('products/destroy/'+product.id,{
+                   isbn    : product.isbn,
+                   name    : product.name,
+                   content : product.content,
+                   quantity : product.quantity,
+                   price   : product.price,
+                   category: this.select_category,
+                   status  : this.select_status
+               }).then((response) => {
                 console.log('Success',response)
-                location.reload(true)
+                //location.reload(true)
               }, (response) => {
                 console.log('Error',response)
               });
+            },
+            destroyMedia(media){
+                this.$http.delete('products/destroy/'+this.id+'/'+media.id).then((response) => {
+                this.media_length--;
+                $( ".table-dic tbody tr" ).find( "td[data-id="+response.data.medias+"]" ).parent().slideUp()
+                console.log('Success',response)
+                //location.reload(true)
+              }, (response) => {
+                console.log('Error',response)
+              });
+            },
+            addMeta(add_meta){
+                 this.$http.post( 'products/saveMeta/'+add_meta ).then((response) => {
+                    console.log('Success',response)
+                    $('#callbacks').multiSelect('addOption', { value: response.data.id, text: add_meta, index: 0 })
+                    $('#callbacks').multiSelect('refresh');
+                    this.add_meta = ''
+                    console.log('Success',add_meta)
+                    //location.reload(true)
+                 }, (response) => {
+                    console.log('Error',response)
+                 });
             }
         },
         watch:{

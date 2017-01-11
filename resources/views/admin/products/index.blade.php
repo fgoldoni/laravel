@@ -28,7 +28,7 @@
         </div>
         <!-- End Page Header -->
         <div class="container-padding">
-            <table  class="display data nowrap table-bordered" cellspacing="0" width="100%">
+            <table  class="display data nowrap table-responsive table-hover" cellspacing="0" width="100%">
                 <thead class="">
                 <tr>
                     <th class=""><input type="checkbox"></th>

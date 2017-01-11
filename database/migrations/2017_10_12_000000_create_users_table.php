@@ -45,6 +45,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned()->index()->after('url');
+        });
     }
 
     /**

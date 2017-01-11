@@ -33,7 +33,8 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'price' => $faker->numberBetween(0,1000000),
         'url' => $faker->domainName,
         'category' => $faker->numberBetween(1,4),
-        'status' => $faker->numberBetween(1,3)
+        'status' => $faker->numberBetween(1,3),
+        'user_id' => $faker->numberBetween(1,3)
     ];
 });
 
@@ -45,7 +46,8 @@ $factory->define(App\Media::class, function (Faker\Generator $faker) {
         'url' => $faker->imageUrl(50,50,null,true,null,false),
         'size' => $faker->numberBetween(1,1000),
         'used' => $faker->firstName,
-        'status' => $faker->numberBetween(1,3)
+        'status' => $faker->numberBetween(1,3),
+        'product_id' => $faker->numberBetween(1,15)
     ];
 });
 

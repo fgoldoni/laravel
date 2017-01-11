@@ -137,14 +137,14 @@ Below codes are only for index widgets
 ================================================ -->
 <!-- Today Sales -->
 <script>
-$('#callbacks').multiSelect({
-afterSelect: function(values){
-console.log("Select value: "+values);
-},
-afterDeselect: function(values){
-alert("Deselect value: "+values);
-}
-});
+    $('#callbacks').multiSelect({
+        afterSelect: function(values){
+            console.log("Select value: "+values);
+        },
+        afterDeselect: function(values){
+            console.log("Deselect value: "+values);
+        }
+    });
 </script>
 
 

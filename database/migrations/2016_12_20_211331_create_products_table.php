@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
         Schema::table('medias', function (Blueprint $table) {
-            $table->integer('product_id')->unsigned()->index();
+            $table->integer('product_id')->unsigned()->index()->after('status');
         });
     }
 
