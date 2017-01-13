@@ -3,7 +3,7 @@
 
 @section('content')
     <div id ="app" class="content">
-        <edit :id="id" ></edit>
+
         <!-- Start Page Header -->
         <div class="page-header">
             <h1 class="title">Blank Page</h1>
@@ -28,17 +28,9 @@
         </div>
         <!-- End Page Header -->
         <div class="container-padding">
-            <div class="panel-body table-responsive">
-                <div id="box1" class="table display" >
 
-                </div>
-                <div id="paging_here1" >
+                    <edit :id="id" ></edit>
 
-                </div>
-            </div>
-            <div id="app1" class="" >
-
-            </div>
             <table  class="display data nowrap table-responsive table-hover" cellspacing="0" width="100%">
                 <thead class="">
                 <tr>
@@ -59,7 +51,7 @@
                 <tbody>
                 @foreach(json_decode($products) as $product)
                     <tr>
-                        <td class="context-menu-one " data-id="{{ $product->id }}"><input type="checkbox"></td>
+                        <td class="context-menu-one testid" data-id="{{ $product->id }}"><input type="checkbox"></td>
                         <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->id }}</td>
                         <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->isbn }}</td>
                         <td class="context-menu-one" data-id="{{ $product->id }}">{{ $product->name }}</td>

@@ -1,5 +1,9 @@
 <template>
-
+    <div class="panel-body table-responsive">
+        <div id="box1"  :data-id="id" class="table display" >
+        </div>
+        <div id="paging_here1" >
+        </div>
     <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -291,6 +295,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </template>
 

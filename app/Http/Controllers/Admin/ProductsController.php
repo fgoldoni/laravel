@@ -37,7 +37,8 @@ class ProductsController extends Controller
     public function showAll()
     {
         $products = Product::get();
-        return Response::json($products,200,[],JSON_NUMERIC_CHECK);
+        $grid     = DataProductsController::loadGrid($products);
+        return Response::json($grid,200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
