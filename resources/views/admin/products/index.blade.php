@@ -28,6 +28,17 @@
         </div>
         <!-- End Page Header -->
         <div class="container-padding">
+            <div class="panel-body table-responsive">
+                <div id="box1" class="table display" >
+
+                </div>
+                <div id="paging_here1" >
+
+                </div>
+            </div>
+            <div id="app1" class="" >
+
+            </div>
             <table  class="display data nowrap table-responsive table-hover" cellspacing="0" width="100%">
                 <thead class="">
                 <tr>

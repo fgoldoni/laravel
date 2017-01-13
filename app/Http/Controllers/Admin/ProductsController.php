@@ -34,6 +34,12 @@ class ProductsController extends Controller
 
     }
 
+    public function showAll()
+    {
+        $products = Product::get();
+        return Response::json($products,200,[],JSON_NUMERIC_CHECK);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

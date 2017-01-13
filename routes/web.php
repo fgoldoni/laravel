@@ -41,10 +41,15 @@ Route::group(['namespace' => 'Admin' , 'prefix' => 'admin'], function(){
     Route::get('products/editOnly/{id}' , 'ProductsController@edit');
     Route::get('products/create' , 'ProductsController@create');
     Route::get('products/show' , 'ProductsController@show');
+    Route::get('products/showAll' , 'ProductsController@showAll');
     Route::post('products/save/{product}/{metas?}' , 'ProductsController@save')->name('products.save');
     Route::put('products/update/{product}' , 'ProductsController@update')->name('products.update');
     Route::delete('products/destroy/{id}/{medias?}/{metas?}' , 'ProductsController@destroy')->name('products.destroy');
     Route::post('products/saveMeta/{id}' , 'ProductsController@saveMeta');
+
+
+    Route::get('users' , 'UsersController@index');
+    Route::get('users/show' , 'UsersController@show');
 });
 
 

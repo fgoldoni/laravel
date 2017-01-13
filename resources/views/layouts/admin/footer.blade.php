@@ -1,3 +1,4 @@
+<script type="text/javascript" src={{ asset('admin/js/webix.js') }}></script>
 
 
 <!-- ================================================
@@ -126,6 +127,7 @@ Bootstrap Date Range Picker
 
 
 <script type="text/javascript" src={{ asset('js/products.js') }}></script>
+<script type="text/javascript" src={{ asset('admin/js/users.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/jquery.contextMenu.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/main.js') }}></script>
 <script type="text/javascript" src={{ asset('admin/js/datatables/datatables.min.js') }}></script>

@@ -7,7 +7,7 @@
         <li><a href="{{ route('pages.index') }}"><span class="icon color5"><i class="fa fa-home"></i></span>Dashboard<span class="label label-default">2</span></a></li>
         <li><a href="{{ route('pages.index') }}"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Mailbox<span class="label label-default">19</span></a></li>
         <li><a href="{{ url('admin/products') }}"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Products<span class="label label-default">19</span></a></li>
-        <li><a href="{{ url('admin/products/edit') }}"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Products Edit<span class="label label-default">19</span></a></li>
+        <li><a href="{{ url('admin/users') }}"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Users Mgt<span class="label label-default">19</span></a></li>
         <li><a href="{{ route('posts.index') }}"><span class="icon color6"><i class="fa fa-envelope-o"></i></span>Mailbox<span class="label label-default">19</span></a></li>
         <li><a href="#"><span class="icon color7"><i class="fa fa-flask"></i></span>UI Elements<span class="caret"></span></a>
             <ul>
