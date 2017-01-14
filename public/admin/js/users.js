@@ -3,13 +3,13 @@
  */
 $(function() {
 
-
+var grid
 webix.attachEvent("onBeforeAjax",
     function(mode, url, data, request, headers, files, promise){
         headers["Content-type"]= "application/json"
         headers["X-CSRF-TOKEN"]= $('meta[name="csrf-token"]').attr('content')
     }
-);
+ );
 grid = webix.ui({
     container: "box1",
     view: "datatable",
@@ -33,24 +33,28 @@ grid = webix.ui({
             id: "isbn",
             header: ["isbn", {content: "textFilter"}],
             adjust: "all",
+            batch:1,
             sort: "string"
         },
         {
             id: "name",
             header: ["name", {content: "textFilter"}],
             adjust: "all",
+            batch:2,
             sort: "string"
         },
         {
             id: "quantity",
             header: ["quantity",{content: "textFilter"}],
             adjust: "all",
+            batch:3,
             sort: "string"
         },
         {
             id: "price",
             header: ["price", {content: "textFilter"}],
             adjust: "all",
+            batch:4,
             sort: "string"
         },
         {
@@ -103,6 +107,9 @@ grid = webix.ui({
     rightSplit: 2,
     leftSplit: 2,
     autoheight: true,
+    resizeColumn: true,
+    resizeRow: true,
+    select: "row",
     onClick: {
         "delbtn": function (e, id, trg) {
             destroy(id)
@@ -110,21 +117,12 @@ grid = webix.ui({
     },
     pager: {
         template: "{common.first()} {common.prev()} {common.pages()} {common.next()} {common.last()}",
-        container: "paging_here1",
-        size: 10,
+        container: "paging",
+        size: 20,
         group: 5
-    },
-    resizeColumn: true,
-    resizeRow: true,
-    select: "row"
-
+    }
 });
-var icon = webix.ui({
-    view:"icon",
-    icon: "envelope",
-    align:"left"
-});
-webix.ui({
+var menu = webix.ui({
     view:"contextmenu",
     id:"cmenu",
     data:[{ id:1,value:"Add",  icon: "plus"},{ id:2,value:"Edit",  icon: "pencil-square"},{ id:3, value:"Publish",  icon: "level-up"},{ id:4, value:"Not-Publish",  icon: "pause"},{ id:5, value:"Delete",  icon: "trash"}],
@@ -136,19 +134,19 @@ webix.ui({
             var uid = listId.row
             switch(this.getItem(id).id) {
                 case 1:
-                    add(uid)
+                    $('#edit_modal').modal('show')
                     break;
                 case 2:
-                    edit(uid)
+                    $('#edit_modal').modal('show')
                     break;
                 case 3:
-                    publish(uid)
+                    update(uid,1)
                     break;
                 case 4:
-                    unpublish(uid)
+                    update(uid,2)
                     break;
                 case 5:
-                    destroy(uid)
+                    update(uid,3)
                     break;
                 default:
 
@@ -159,27 +157,21 @@ webix.ui({
         }
     }
 });
-$$("cmenu").attachTo(grid);
-var add = function (uid) {
-    $('#edit_modal').modal('show')
-    console.log("add"+uid)
-}
-var edit = function (uid) {
-    debugger
-    $('#edit_modal').modal('show')
-}
-var publish = function (uid) {
-    console.log("publish"+uid)
-}
-var unpublish = function (uid) {
-    console.log("unpublish"+uid)
-}
+menu.attachTo(grid);
 var destroy = function (uid) {
     webix.ajax().del("products/destroy/"+uid, function (text, data) {
         webix.message("Delete "+data.json().success)
         grid.remove(uid)
         grid.refresh()
     });
-}
-
+ }
+ var update =   function(uid, status) {
+     webix.ajax().put("products/update/" + uid,{ status: status }, function (text, data) {
+         webix.message("Delete " + data.json().success)
+         var id = data.json().id
+         var item = grid.getItem(id)
+         item['status'] = data.json().status
+         grid.updateItem(id, item);
+     });
+ }
 });

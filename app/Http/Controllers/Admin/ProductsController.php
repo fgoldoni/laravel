@@ -115,9 +115,11 @@ class ProductsController extends Controller
         $inputs = $request->all();
         $product = Product::findOrFail($id);
         $product->update($inputs);
+        $status =DataProductsController::getSelectOptionsStatus()[$product->status];
         $data['id'] = $id;
+        $data['status'] = DataProductsController::setStatus($status);
         $data['success'] ='Item has been updated successfully';
-        return Response::json($data,200,[]);
+        return Response::json($data,200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
@@ -139,8 +141,7 @@ class ProductsController extends Controller
         }
         $data['id'] = $id;
         $data['success'] ='Item was saved successfully';
-        return Response::json($data,200,[]);
-        return Response::json(data,200,[]);
+        return Response::json($data,200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
@@ -167,7 +168,7 @@ class ProductsController extends Controller
         }
         $data['medias'] =$medias;
         $data['success'] ='Item was deleted successfully';
-        return Response::json($data,200,[]);
+        return Response::json($data,200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
@@ -178,6 +179,6 @@ class ProductsController extends Controller
         $meta->tag = $meta_name;
         $meta->save();
         $data['id'] = $meta->id;
-        return Response::json($data,200,[]);
+        return Response::json($data,200,[],JSON_NUMERIC_CHECK);
     }
 }

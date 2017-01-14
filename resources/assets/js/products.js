@@ -53,12 +53,15 @@ vm = new Vue({
 $(document).ready(function() {
     $.contextMenu({
         selector: '.context-menu-one',
+        trigger: 'left',
+
         callback: function(key, options) {
             var m = "clicked: " + key;
              var id =$(this).data('id')
 
             switch (key) {
                 case 'edit':
+                    debugger
                     vm.edit(id)
                     break;
                 case 'published':
@@ -84,10 +87,10 @@ $(document).ready(function() {
         }
     });
     $('.context-menu-one').on('click', function(e){
-        //console.log('clicked', this);
+
     });
     var tt =function () {
-        console.log('tt')
+        console.log(u_id)
     }
 } );
 

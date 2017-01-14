@@ -75,7 +75,7 @@ class DataProductsController extends Controller
             $tpl_data['url']        = $product->url;
             $tpl_data['created_at'] = $product->created_at->toDateString();
             $tpl_data['updated_at'] = $product->updated_at->toDateString();
-            $tpl_data['actions']    = '<a data-toggle="modal" data-target="#edit_modal" class="btn btn-warning btn-icon" style="margin:3px;" onclick="console.log(' . $product->id . ')" ><i class="fa fa-pencil-square" aria-hidden="true"></i></a>';
+            $tpl_data['actions']    = '<a data-toggle="modal" data-target="#myModal2" class="btn btn-warning btn-icon" style="margin:3px;" onclick="console.log(' . $product->id . ')" ><i class="fa fa-pencil-square" aria-hidden="true"></i></a>';
             $tpl_data['actions']   .= '<a class="btn btn-danger btn-icon delbtn" :id="id" style="margin:3px;"><i class="fa fa-trash" aria-hidden="true"></i></a>';
             $result[]=$tpl_data;
         }
