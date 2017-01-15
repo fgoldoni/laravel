@@ -17,7 +17,7 @@
             <div class="right">
                 <div class="btn-group" role="group" aria-label="...">
                     <a href="index.html" class="btn btn-light">Dashboard</a>
-                    <a href="#" class="btn btn-light" @click="add"><i class="fa fa-plus"></i></a>
+                    <a href="#" id="add" class="btn btn-light" @click="add"><i class="fa fa-plus"></i></a>
                     <a href="#" class="btn btn-light" @click="refresh"><i class="fa fa-refresh"></i></a>
                     <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
                     <a href="#" class="btn btn-light" id="topstats"><i class="fa fa-line-chart"></i></a>
@@ -29,6 +29,7 @@
         <!-- End Page Header -->
         <div class="container-padding">
             <div class="panel-body table-responsive">
+                <span id="trigger_edit" @click="edit(1)"></span>
                 <div id="box1"  :data-id="id" class="table display" >%%Grid%%</div>
                 <div id="paging" ></div>
             </div>

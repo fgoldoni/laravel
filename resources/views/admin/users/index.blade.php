@@ -1,4 +1,4 @@
-@extends('layouts.admin.default')
+@extends('layouts.admin.default_users')
 
 
 @section('content')
@@ -16,10 +16,10 @@
             </ul>
         </div>
         <div class="panel-body table-responsive">
-            <div id="box1" class="table display" >
+            <div id="box2" class="table display" >
 
             </div>
-            <div id="paging_here1" >
+            <div id="paging_here2" >
 
             </div>
         </div>

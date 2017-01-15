@@ -115,9 +115,8 @@ class ProductsController extends Controller
         $inputs = $request->all();
         $product = Product::findOrFail($id);
         $product->update($inputs);
-        $status =DataProductsController::getSelectOptionsStatus()[$product->status];
         $data['id'] = $id;
-        $data['status'] = DataProductsController::setStatus($status);
+        $data['status'] = DataProductsController::getSelectOptionsStatus()[$product->status];
         $data['success'] ='Item has been updated successfully';
         return Response::json($data,200,[],JSON_NUMERIC_CHECK);
     }

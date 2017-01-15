@@ -17,8 +17,8 @@ vm = new Vue({
         console.log('vue mounted')
     },
     methods: {
-        edit(id){
-            this.id = id
+        edit(){
+            this.id = $('#box1').attr('data-id')
         },
         destroy(id){
             this.$http.delete('products/destroy/' + id).then((response) => {

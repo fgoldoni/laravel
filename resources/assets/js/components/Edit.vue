@@ -31,10 +31,12 @@
                                     <div class="panel-body">
                                         <input type="text" class="form-control" placeholder="Search ...">
                                         <ul class="basic-list">
-                                            <!--<li v-for="product in products" @click="edit(product.id)"
+
+                                            <li v-for="product in products" @click="edit(product.id)"
                                                 class="sortable">{{ product.id +"/"+ product.name }}
                                                 <span class="right label " :class="label(product.status)">{{ product.quantity }}</span>
-                                            </li>-->
+                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
